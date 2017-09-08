@@ -7,10 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String TAG = MainActivity.class.getSimpleName();
     private Button mExploreButton;
     private EditText mLocationEditText;
 
@@ -18,17 +16,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mLocationEditText = (EditText) findViewById(R.id.locationEditText);
         mExploreButton = (Button) findViewById(R.id.exploreButton);
+
         mExploreButton.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
                 String location = mLocationEditText.getText().toString();
-                Log.d(TAG, location);
                 Intent intent = new Intent(MainActivity.this, TrailsActivity.class);
+                intent.putExtra("location", location);
                 startActivity(intent);
             }
         });
