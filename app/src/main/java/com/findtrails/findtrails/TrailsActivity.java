@@ -11,12 +11,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class TrailsActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
-
-    private TextView mLocationTextView;
-    private ListView mListView;
+    @Bind(R.id.locationTextView) TextView mLocationTextView;
+    @Bind(R.id.listView) ListView mListView;
 
     private String[] trails = new String[] {"Discovery Park", "Pike Place Market",
             "The Washington Park Arbore", "Green Lake Loop Trail", "Seattle Waterfront Pathway", "Seward Park",
@@ -29,8 +31,7 @@ public class TrailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trails);
 
-        mListView = (ListView) findViewById(R.id.listView);
-        mLocationTextView = (TextView) findViewById(R.id.locationTextView);
+       ButterKnife.bind(this);
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, trails);
         mListView.setAdapter(adapter);
@@ -39,8 +40,11 @@ public class TrailsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String trail = ((TextView)view).getText().toString();
-                Log.d(TAG, trail);
-                Toast.makeText(TrailsActivity.this, trail, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent (TrailsActivity.this, TrailDetailActivity.class);
+
+                intent.putExtra("trailName", trail);
+
+                startActivity(intent);
             }
         });
 

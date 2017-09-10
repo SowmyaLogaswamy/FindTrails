@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TrailsActivity"></activity>
+        <activity android:name=".TrailsActivity" />
+        <activity android:name=".TrailDetailActivity"></activity>
     </application>
 
 </manifest>
