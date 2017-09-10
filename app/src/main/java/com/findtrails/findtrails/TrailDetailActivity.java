@@ -35,11 +35,6 @@ public class TrailDetailActivity extends AppCompatActivity {
         trailMap.put("Tollantusky Trail", "Tollantusky Trail is a 1.5 mile loop trail located near Conway, Arkansas and is good for all skill levels. The trail is primarily used for hiking and is accessible year-round.!");
         trailMap.put("Hensley Settlement", "Hensley Settlement is a 3.6 mile lightly trafficked loop trail located near Big Bear City, California that offers scenic views and is rated as moderate. The trail is primarily used for hiking, walking, and mountain biking and is best used from May until November.Nice trail!!");
     }
-    private String[] trails = new String[] {"Discovery Park", "Pike Place Market",
-            "The Washington Park Arbore", "Green Lake Loop Trail", "Seattle Waterfront Pathway", "Seward Park",
-            "Mount Rosa Trail", "Burke Gilman Trail", "Alki Trail", "Foster Island Trail",
-            "Interurban Trail", "Camp Long Trails", "Columbine Trail",
-            "Tollantusky Trail", "Hensley Settlement"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
