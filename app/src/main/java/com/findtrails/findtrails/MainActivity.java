@@ -13,7 +13,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Bind(R.id.exploreButton) Button mExploreButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
@@ -27,15 +27,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mExploreButton.setOnClickListener(new View.OnClickListener() {
+        mExploreButton.setOnClickListener(this);
+    }
             @Override
             public void onClick(View v) {
-                String location = mLocationEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, TrailsActivity.class);
-                intent.putExtra("location", location);
-                startActivity(intent);
+                if (v == mExploreButton) {
+                    String location = mLocationEditText.getText().toString();
+                    Intent intent = new Intent(MainActivity.this, TrailsActivity.class);
+                    intent.putExtra("location", location);
+                    startActivity(intent);
+                }
             }
-        });
-    }
 }
 
