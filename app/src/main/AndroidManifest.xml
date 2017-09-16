@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TrailsActivity">
+        <activity android:name=".ui.TrailsActivity">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.findtrails.findtrails.MainActivity">
+            android:value="com.findtrails.findtrails.ui.MainActivity">
         </meta-data>
         </activity>
         <activity android:name=".TrailDetailActivity">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.findtrails.findtrails.TrailsActivity">
+            android:value="com.findtrails.findtrails.ui.TrailsActivity">
         </meta-data>
         </activity>
     </application>

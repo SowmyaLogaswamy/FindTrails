@@ -1,15 +1,19 @@
-package com.findtrails.findtrails;
+package com.findtrails.findtrails.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.findtrails.findtrails.R;
+import com.findtrails.findtrails.adapters.TrailListAdapter;
+import com.findtrails.findtrails.models.Trail;
+import com.findtrails.findtrails.services.AllTrailsService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,9 +26,12 @@ import okhttp3.Response;
 
 public class TrailsActivity extends AppCompatActivity {
 
-    public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String TAG = TrailsActivity.class.getSimpleName();
+
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.locationTextView) TextView mLocationTextView;
-    @Bind(R.id.listView) ListView mListView;
+    private TrailListAdapter mAdapter;
+
 
 //    private String[] trails = new String[]{"Discovery Park", "Pike Place Market",
 //            "The Washington Park Arbore", "Green Lake Loop Trail", "Seattle Waterfront Pathway", "Seward Park",
@@ -58,7 +65,7 @@ public class TrailsActivity extends AppCompatActivity {
 //            }
 //        });
 
-        mLocationTextView.setText("Yayy!! We have found you trails near " + location);
+
         getTrails(location);
 
     }
@@ -79,26 +86,19 @@ public class TrailsActivity extends AppCompatActivity {
 
                 TrailsActivity.this.runOnUiThread(new Runnable() {
 
+
                                                       @Override
                                                       public void run() {
-                                                          String[] trailNames = new String[mTrails.size()];
-                                                          for (int i = 0; i < trailNames.length; i++) {
-                                                              trailNames[i] = mTrails.get(i).getName();
+                                                          mAdapter = new TrailListAdapter(getApplicationContext(), mTrails);
+                                                          mRecyclerView.setAdapter(mAdapter);
+                                                          RecyclerView.LayoutManager layoutManager =
+                                                                  new LinearLayoutManager(TrailsActivity.this);
+                                                          mRecyclerView.setLayoutManager(layoutManager);
+                                                          mRecyclerView.setHasFixedSize(true);
 
-                                                          }
-
-                                                          ArrayAdapter adapter = new ArrayAdapter(TrailsActivity.this,
-                                                                  android.R.layout.simple_list_item_1, trailNames);
-                                                          mListView.setAdapter(adapter);
-
-                                                          for (Trail trail : mTrails) {
-                                                              Log.d(TAG, "City: " + trail.getCity());
-                                                              Log.d(TAG, "State: " + trail.getState());
-                                                              Log.d(TAG, "Name: " + trail.getName());
-                                                              Log.d(TAG, "Direction: " + trail.getDirections());
-                                                          }
-
+                                                         mLocationTextView.setText("Here are the trails near " + mTrails.get(0).getCity());
                                                       }
+
                                                   });
 
 //                try {

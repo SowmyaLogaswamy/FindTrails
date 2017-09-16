@@ -1,4 +1,4 @@
-package com.findtrails.findtrails;
+package com.findtrails.findtrails.models;
 
 /**
  * Created by Guest on 9/15/17.

@@ -1,4 +1,7 @@
-package com.findtrails.findtrails;
+package com.findtrails.findtrails.services;
+
+import com.findtrails.findtrails.Constants;
+import com.findtrails.findtrails.models.Trail;
 
 import org.json.JSONArray;
 import org.json.JSONException;

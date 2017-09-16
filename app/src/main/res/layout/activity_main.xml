@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.findtrails.findtrails.MainActivity"
+    tools:context="com.findtrails.findtrails.ui.MainActivity"
     android:background="#000000">
 
     <ImageView
@@ -34,7 +34,7 @@
         android:layout_above="@+id/exploreButton"
         android:layout_marginBottom="10dp"
         android:padding="5dp"
-        android:hint="Which city do you want to Explore?"
+        android:hint="Which City/Country do you want to Explore?"
         android:layout_centerHorizontal="true" />
 
     <Button

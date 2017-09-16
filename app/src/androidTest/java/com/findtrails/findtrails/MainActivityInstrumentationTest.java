@@ -5,9 +5,9 @@ package com.findtrails.findtrails;
  */
 
 import android.support.test.rule.ActivityTestRule;
-import android.view.View;
 
-import org.hamcrest.Matcher;
+import com.findtrails.findtrails.ui.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 
