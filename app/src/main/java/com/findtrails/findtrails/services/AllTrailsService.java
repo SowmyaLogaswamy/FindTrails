@@ -6,20 +6,14 @@ import com.findtrails.findtrails.models.Trail;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-/**
- * Created by Guest on 9/15/17.
- */
 
 public class AllTrailsService {
 
@@ -28,7 +22,6 @@ public class AllTrailsService {
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.All_TRAILS_BASE_URL).newBuilder();
-
         urlBuilder
                 .addQueryParameter(Constants.ALL_TRAILS_LOCATION_QUERY_PARAMETER, location)
                 .addQueryParameter(Constants.ALL_TRAILS_ACTIVITY_QUERY_PARAMETER, Constants.ALL_TRAILS_ACTIVITY)
@@ -42,8 +35,6 @@ public class AllTrailsService {
 
         Call call = client.newCall(request);
         call.enqueue(callback);
-
-
     }
 
    public static ArrayList<Trail> processResults(Response response) {

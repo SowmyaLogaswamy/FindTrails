@@ -11,13 +11,12 @@
         android:id="@+id/recyclerView"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/locationTextView"
+        android:background="@color/colorAccent"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/colorPrimary"/>
-
-
-
 </RelativeLayout>

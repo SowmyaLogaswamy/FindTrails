@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -41,11 +39,9 @@ public class TrailDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_detail);
         ButterKnife.bind(this);
-
         Intent intent =getIntent();
         String trailName = intent.getStringExtra("trailName");
         mHeadingTextView.setText(trailName);
-
         String trailDetail = trailMap.get(trailName);
         mDetailTextView.setText(trailDetail);
 
