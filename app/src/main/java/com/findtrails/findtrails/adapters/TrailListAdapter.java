@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
  * Created by Guest on 9/15/17.
  */
 
-public class TrailListAdapter extends RecyclerViewAdapter<TraiListAdapter.TrailViewHolder> {
+public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.TrailViewHolder> {
     private ArrayList<Trail> mTrails = new ArrayList<>();
     private Context mContext;
 
@@ -49,8 +49,9 @@ public class TrailListAdapter extends RecyclerViewAdapter<TraiListAdapter.TrailV
 
 
     public class TrailViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.trailImageView) ImageView mTrailImageView;
+
         @Bind(R.id.trailNameTextView) TextView mNameTextView;
+        @Bind(R.id.trailDescriptionTextView) TextView mtrailDescriptionTextView;
 
 
         private Context mContext;
@@ -63,6 +64,7 @@ public class TrailListAdapter extends RecyclerViewAdapter<TraiListAdapter.TrailV
 
         public void bindTrail(Trail trail) {
             mNameTextView.setText(trail.getName());
+            mtrailDescriptionTextView.setText(trail.getDirections());
 
         }
     }
