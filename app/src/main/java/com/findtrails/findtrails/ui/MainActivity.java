@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.findtrails.findtrails.R;
 
@@ -36,9 +37,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 if (v == mExploreButton) {
                     String location = mLocationEditText.getText().toString();
-                    Intent intent = new Intent(MainActivity.this, TrailsActivity.class);
-                    intent.putExtra("location", location);
-                    startActivity(intent);
+                   if(location.length() == 0) {
+                       Toast.makeText(MainActivity.this, "Enter a valid city name!", Toast.LENGTH_LONG).show();
+                   }
+                    else {
+                       Intent intent = new Intent(MainActivity.this, TrailsActivity.class);
+                       intent.putExtra("location", location);
+                       startActivity(intent);
+                   }
                 }
             }
 }
