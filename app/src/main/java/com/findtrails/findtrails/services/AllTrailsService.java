@@ -61,9 +61,6 @@ public class AllTrailsService {
 
                     JSONArray activitiesJSON = trailJSON.getJSONArray("activities");
                     JSONObject trailsJSON = activitiesJSON.getJSONObject(0);
-//                      for(int j = 0 ; j< activitiesJSON.length(); j++)
-
-
 
                           String url = trailsJSON.getString("url");
 

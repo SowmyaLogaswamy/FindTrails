@@ -1,5 +1,10 @@
 package com.findtrails.findtrails.models;
 
+import org.parceler.Parcel;
+
+import java.util.ArrayList;
+
+@Parcel
 public class Trail {
     private String mCity;
     private String mState;
@@ -7,6 +12,9 @@ public class Trail {
     private String mDirections;
     private String mDescription;
     private String mUrl;
+
+    public Trail() {}
+
     public Trail(String city, String state, String name, String directions, String description, String url) {
         this.mCity = city;
         this.mState = state;
