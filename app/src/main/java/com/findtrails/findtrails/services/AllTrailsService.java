@@ -59,7 +59,16 @@ public class AllTrailsService {
 
                     String description = trailJSON.optString("description");
 
-                    Trail trail = new Trail(city, state, trailName, directions, description);
+                    JSONArray activitiesJSON = trailJSON.getJSONArray("activities");
+                    JSONObject trailsJSON = activitiesJSON.getJSONObject(0);
+//                      for(int j = 0 ; j< activitiesJSON.length(); j++)
+
+
+
+                          String url = trailsJSON.getString("url");
+
+
+                    Trail trail = new Trail(city, state, trailName, directions, description, url);
                     trails.add(trail);
                 }
 

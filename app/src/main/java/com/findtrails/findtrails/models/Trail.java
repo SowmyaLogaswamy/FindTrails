@@ -6,12 +6,14 @@ public class Trail {
     private String mName;
     private String mDirections;
     private String mDescription;
-    public Trail(String city, String state, String name, String directions, String description) {
+    private String mUrl;
+    public Trail(String city, String state, String name, String directions, String description, String url) {
         this.mCity = city;
         this.mState = state;
         this.mName = name;
         this.mDirections = directions;
         this.mDescription = description;
+        this.mUrl = url;
     }
 
     public String getCity() {
@@ -32,6 +34,10 @@ public class Trail {
 
     public String getDescription() {
         return mDescription;
+    }
+
+    public String getUrl() {
+        return mUrl;
     }
 }
 

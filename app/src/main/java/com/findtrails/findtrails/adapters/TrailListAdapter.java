@@ -39,6 +39,7 @@ public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.Trai
         @Bind(R.id.trailNameTextView) TextView mNameTextView;
         @Bind(R.id.trailDescriptionTextView) TextView mTrailDescriptionTextView;
         @Bind(R.id.trailDirectionsTextView) TextView mTrailDirectionsTextView;
+        @Bind(R.id.trailUrlTextView) TextView mTrailUrlTextView;
         //private Context mContext;
 
         public TrailViewHolder(View itemView) {
@@ -61,6 +62,8 @@ public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.Trai
             } else {
                 mTrailDirectionsTextView.setText("Directions:    " + trail.getDirections());
             }
+
+            mTrailUrlTextView.setText(trail.getUrl());
         }
     }
 }
