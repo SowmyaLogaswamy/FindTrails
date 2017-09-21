@@ -49,15 +49,17 @@ public class AllTrailsService {
                 for (int i = 0; i < placesJSON.length(); i++) {
                     JSONObject trailJSON = placesJSON.getJSONObject(i);
 
-                    String cityName = trailJSON.getString("city");
+                    String city = trailJSON.getString("city");
 
-                    String stateName = trailJSON.getString("state");
+                    String state = trailJSON.getString("state");
 
-                    String nameOfPlace = trailJSON.getString("name");
+                    String trailName = trailJSON.getString("name");
 
-                    String directionsName = trailJSON.getString("directions");
+                    String directions = trailJSON.getString("directions");
 
-                    Trail trail = new Trail(cityName, stateName, nameOfPlace, directionsName);
+                    String description = trailJSON.optString("description");
+
+                    Trail trail = new Trail(city, state, trailName, directions, description);
                     trails.add(trail);
                 }
 

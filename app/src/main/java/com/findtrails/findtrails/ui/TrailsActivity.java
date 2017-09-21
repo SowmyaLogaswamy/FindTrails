@@ -64,7 +64,9 @@ public class TrailsActivity extends AppCompatActivity {
                       RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TrailsActivity.this);
                       mRecyclerView.setLayoutManager(layoutManager);
                       mRecyclerView.setHasFixedSize(true);
-                      mLocationTextView.setText("Here are the trails near " + mTrails.get(0).getCity());
+                      for(int i = 0; i< mTrails.size(); i++) {
+                          mLocationTextView.setText("Here are the trails near " + mTrails.get(0).getCity() + ", " + mTrails.get(i).getState());
+                      }
                   }
                 });
             }

@@ -37,19 +37,30 @@ public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.Trai
 
     public class TrailViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.trailNameTextView) TextView mNameTextView;
-        @Bind(R.id.trailDescriptionTextView) TextView mtrailDescriptionTextView;
-        private Context mContext;
+        @Bind(R.id.trailDescriptionTextView) TextView mTrailDescriptionTextView;
+        @Bind(R.id.trailDirectionsTextView) TextView mTrailDirectionsTextView;
+        //private Context mContext;
 
         public TrailViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            mContext = itemView.getContext();
+            //mContext = itemView.getContext();
         }
 
         public void bindTrail(Trail trail) {
             mNameTextView.setText(trail.getName());
-            mtrailDescriptionTextView.setText(trail.getDirections());
 
+            if(trail.getDescription() == "null") {
+                mTrailDescriptionTextView.setText("Description:    No description available");
+            } else {
+                mTrailDescriptionTextView.setText("Description:    " + trail.getDescription());
+            }
+
+            if(trail.getDirections() == "null") {
+                mTrailDirectionsTextView.setText("Directions:   No directions available");
+            } else {
+                mTrailDirectionsTextView.setText("Directions:    " + trail.getDirections());
+            }
         }
     }
 }
