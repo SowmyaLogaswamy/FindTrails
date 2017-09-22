@@ -75,13 +75,15 @@
             android:layout_height="wrap_content"
             android:text="www.trails.com"
             android:id="@+id/websiteTextView"
+            android:layout_below="@+id/detailDirectionTextView"
+            android:layout_marginTop="200dp"
             android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"
-            android:drawablePadding="300dp"
+            android:drawablePadding="4dp"
             android:textColor="@color/colorViolet"
             android:textSize="15sp"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
-            android:gravity="center" />
+            android:gravity="left" />
 </LinearLayout>
 
         <Button
