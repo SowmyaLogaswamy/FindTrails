@@ -1,13 +1,18 @@
 package com.findtrails.findtrails.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.findtrails.findtrails.R;
+import com.findtrails.findtrails.ui.TrailDetailActivity;
 import com.findtrails.findtrails.models.Trail;
+
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,7 +40,7 @@ public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.Trai
         return mTrails.size();
     }
 
-    public class TrailViewHolder extends RecyclerView.ViewHolder {
+    public class TrailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.trailNameTextView) TextView mNameTextView;
         @Bind(R.id.trailDescriptionTextView) TextView mTrailDescriptionTextView;
         @Bind(R.id.trailDirectionsTextView) TextView mTrailDirectionsTextView;
@@ -45,8 +50,19 @@ public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.Trai
         public TrailViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            //mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+            mContext = itemView.getContext();
         }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, TrailDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("trails", Parcels.wrap(mTrails));
+            mContext.startActivity(intent);
+        }
+
 
         public void bindTrail(Trail trail) {
             mNameTextView.setText(trail.getName());
