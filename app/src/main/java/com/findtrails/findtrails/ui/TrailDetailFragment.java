@@ -1,6 +1,8 @@
 package com.findtrails.findtrails.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,7 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class TrailDetailFragment extends Fragment {
+public class TrailDetailFragment extends Fragment implements View.OnClickListener {
 
     @Bind(R.id.trailNameTextView) TextView mNameLabel;
     @Bind(R.id.detailDescriptionTextView) TextView mDescriptionLabel;
@@ -53,9 +55,21 @@ public class TrailDetailFragment extends Fragment {
         mNameLabel.setText(mTrail.getName());
         mDescriptionLabel.setText(mTrail.getDescription());
         mDirectionsLabel.setText(mTrail.getDirections());
-        mUrlLabel.setText(mTrail.getUrl());
+        //mUrlLabel.setText(mTrail.getUrl());
+
+        mUrlLabel.setOnClickListener(this);
         return view;
 
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mUrlLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mTrail.getUrl()));
+            startActivity(webIntent);
+        }
+
+
+    }
 }
