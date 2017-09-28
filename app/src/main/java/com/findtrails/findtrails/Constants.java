@@ -7,4 +7,6 @@ public class Constants {
     public static final String ALL_TRAILS_ACTIVITY_QUERY_PARAMETER = "q[activities_activity_type_name_eq]";
     public static final String ALL_TRAILS_ACTIVITY = "hiking";
     public static final String ALL_TRAILS_LOCATION_QUERY_PARAMETER = "q[city_cont]";
+
+    public static final String PREFERENCES_LOCATION_KEY = "location";
 }

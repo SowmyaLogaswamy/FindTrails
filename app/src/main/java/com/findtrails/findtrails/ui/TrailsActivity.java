@@ -1,6 +1,8 @@
 package com.findtrails.findtrails.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.findtrails.findtrails.Constants;
 import com.findtrails.findtrails.R;
 import com.findtrails.findtrails.adapters.TrailListAdapter;
 import com.findtrails.findtrails.models.Trail;
@@ -27,6 +30,9 @@ import okhttp3.Response;
 public class TrailsActivity extends AppCompatActivity {
     public static final String TAG = TrailsActivity.class.getSimpleName();
 
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
+
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.locationTextView) TextView mLocationTextView;
     private TrailListAdapter mAdapter;
@@ -40,6 +46,13 @@ public class TrailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
         getTrails(location);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        if (mRecentAddress != null) {
+            getTrails(mRecentAddress);
+        }
+        Log.d("Shared Pref Location", mRecentAddress);
     }
 
     private void getTrails(String location) {
