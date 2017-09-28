@@ -30,8 +30,8 @@ import okhttp3.Response;
 public class TrailsActivity extends AppCompatActivity {
     public static final String TAG = TrailsActivity.class.getSimpleName();
 
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+    //private SharedPreferences mSharedPreferences;
+    //private String mRecentAddress;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.locationTextView) TextView mLocationTextView;
@@ -47,12 +47,12 @@ public class TrailsActivity extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         getTrails(location);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        if (mRecentAddress != null) {
-            getTrails(mRecentAddress);
-        }
-        Log.d("Shared Pref Location", mRecentAddress);
+       // mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+       // mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+       // if (mRecentAddress != null) {
+       //     getTrails(mRecentAddress);
+       // }
+       // Log.d("Shared Pref Location", mRecentAddress);
     }
 
     private void getTrails(String location) {

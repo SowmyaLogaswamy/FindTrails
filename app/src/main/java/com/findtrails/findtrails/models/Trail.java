@@ -6,46 +6,46 @@ import java.util.ArrayList;
 
 @Parcel
 public class Trail {
-    private String mCity;
-    private String mState;
-    private String mName;
-    private String mDirections;
-    private String mDescription;
-    private String mUrl;
+    private String city;
+    private String state;
+    private String name;
+    private String directions;
+    private String description;
+    private String url;
 
     public Trail() {}
 
     public Trail(String city, String state, String name, String directions, String description, String url) {
-        this.mCity = city;
-        this.mState = state;
-        this.mName = name;
-        this.mDirections = directions;
-        this.mDescription = description;
-        this.mUrl = url;
+        this.city = city;
+        this.state = state;
+        this.name = name;
+        this.directions = directions;
+        this.description = description;
+        this.url = url;
     }
 
     public String getCity() {
-        return mCity;
+        return city;
     }
 
     public String getState() {
-        return mState;
+        return state;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public String getDirections() {
-        return mDirections;
+        return directions;
     }
 
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
     public String getUrl() {
-        return mUrl;
+        return url;
     }
 }
 

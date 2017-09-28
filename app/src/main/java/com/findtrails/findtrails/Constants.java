@@ -9,4 +9,6 @@ public class Constants {
     public static final String ALL_TRAILS_LOCATION_QUERY_PARAMETER = "q[city_cont]";
 
     public static final String PREFERENCES_LOCATION_KEY = "location";
+    public static final String FIREBASE_CHILD_SEARCHED_LOCATION = "searchedLocation";
+    public static final String FIREBASE_CHILD_TRAILS = "trails";
 }

@@ -9,9 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.findtrails.findtrails.Constants;
 import com.findtrails.findtrails.R;
 import com.findtrails.findtrails.models.Trail;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
@@ -58,6 +62,8 @@ public class TrailDetailFragment extends Fragment implements View.OnClickListene
         //mUrlLabel.setText(mTrail.getUrl());
 
         mUrlLabel.setOnClickListener(this);
+
+        mSaveTrailButton.setOnClickListener(this);
         return view;
 
     }
@@ -68,6 +74,14 @@ public class TrailDetailFragment extends Fragment implements View.OnClickListene
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mTrail.getUrl()));
             startActivity(webIntent);
+        }
+
+        if (v == mSaveTrailButton) {
+            DatabaseReference trailRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_TRAILS);
+            trailRef.push().setValue(mTrail);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
 
 
