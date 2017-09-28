@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.findtrails.findtrails">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,17 +21,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.TrailsActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.findtrails.findtrails.ui.MainActivity">
-        </meta-data>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.findtrails.findtrails.ui.MainActivity"></meta-data>
         </activity>
         <activity android:name=".ui.TrailDetailActivity">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.findtrails.findtrails.ui.TrailsActivity">
-        </meta-data>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.findtrails.findtrails.ui.TrailsActivity"></meta-data>
         </activity>
+        <activity android:name=".ui.SavedTrailListActivity"></activity>
     </application>
 
 </manifest>
