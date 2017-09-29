@@ -6,5 +6,11 @@
     <color name="colorViolet">#3399ff</color>
     <color name="colorTextBackground">#8cff66</color>
     <color name="colorwebsite">#66ccff</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#727272</color>
+    <color name="colorDivider">#B6B6B6</color>
+    <color name="colorTextIcons">#ffffff</color>
+
+    <color name="colorPrimaryLight">#FFCCBC</color>
 
 </resources>

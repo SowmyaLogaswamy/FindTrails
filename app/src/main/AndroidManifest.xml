@@ -13,24 +13,26 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/NoActionBarTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.TrailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.findtrails.findtrails.ui.MainActivity"></meta-data>
+                android:value="com.findtrails.findtrails.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.TrailDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.findtrails.findtrails.ui.TrailsActivity"></meta-data>
+                android:value="com.findtrails.findtrails.ui.TrailsActivity" />
         </activity>
-        <activity android:name=".ui.SavedTrailListActivity"></activity>
+        <activity android:name=".ui.SavedTrailListActivity" />
+        <activity android:name=".ui.CreateAccountActivity" />
+        <activity android:name=".ui.LoginActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
