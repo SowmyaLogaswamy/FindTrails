@@ -2,7 +2,7 @@ package com.findtrails.findtrails.models;
 
 import org.parceler.Parcel;
 
-import java.util.ArrayList;
+
 
 @Parcel
 public class Trail {

@@ -25,6 +25,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    @Bind(R.id.savedTrailsButton) Button mSavedTrailsButton;
+
     private ValueEventListener mSearchedLocationReferenceListener;
 
     private DatabaseReference mSearchedLocationReference;
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
+
+
 
         mSearchedLocationReferenceListener = mSearchedLocationReference.addValueEventListener(new ValueEventListener() {
 
@@ -74,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAppNameTextView.setTypeface(pacificoFont);
 
         mExploreButton.setOnClickListener(this);
+        mSavedTrailsButton.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -86,6 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           //  }
             Intent intent = new Intent(MainActivity.this, TrailsActivity.class);
             intent.putExtra("location", location);
+            startActivity(intent);
+        }
+
+        if (v == mSavedTrailsButton) {
+            Intent intent = new Intent(MainActivity.this, SavedTrailListActivity.class);
             startActivity(intent);
         }
     }

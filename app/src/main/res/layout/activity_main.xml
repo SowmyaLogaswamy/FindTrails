@@ -39,10 +39,24 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="My Saved Trails"
+        android:id="@+id/savedTrailsButton"
+        android:background="@color/colorAccent"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Explore"
         android:id="@+id/exploreButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:layout_above="@+id/savedTrailsButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
         android:background="@color/colorAccent"
          />
 </RelativeLayout>

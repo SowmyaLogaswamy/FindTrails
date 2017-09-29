@@ -34,10 +34,10 @@ public class FirebaseTrailViewHolder extends RecyclerView.ViewHolder implements 
         itemView.setOnClickListener(this);
     }
 
-    public void bindRestaurant(Trail trail) {
+    public void bindTrail(Trail trail) {
         TextView nameTextView = (TextView) mView.findViewById(R.id.trailNameTextView);
-        TextView descriptionTextView = (TextView) mView.findViewById(R.id.detailDescriptionTextView);
-        TextView directionTextView = (TextView) mView.findViewById(R.id.detailDirectionTextView);
+        TextView descriptionTextView = (TextView) mView.findViewById(R.id.trailDescriptionTextView);
+        TextView directionTextView = (TextView) mView.findViewById(R.id.trailDirectionsTextView);
 
 
         nameTextView.setText(trail.getName());
