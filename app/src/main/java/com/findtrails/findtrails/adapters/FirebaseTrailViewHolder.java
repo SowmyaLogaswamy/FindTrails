@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.findtrails.findtrails.Constants;
 import com.findtrails.findtrails.R;
 import com.findtrails.findtrails.models.Trail;
-import com.findtrails.findtrails.ui.TrailsActivity;
+import com.findtrails.findtrails.ui.TrailListActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,7 +59,7 @@ public class FirebaseTrailViewHolder extends RecyclerView.ViewHolder implements 
 
                 int itemPosition = getLayoutPosition();
 
-                Intent intent = new Intent(mContext, TrailsActivity.class);
+                Intent intent = new Intent(mContext, TrailListActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("trails", Parcels.wrap(trails));
 

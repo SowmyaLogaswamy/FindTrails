@@ -14,7 +14,7 @@
         <activity
             android:name=".ui.MainActivity" />
 
-        <activity android:name=".ui.TrailsActivity">
+        <activity android:name=".ui.TrailListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.findtrails.findtrails.ui.MainActivity" />
@@ -23,7 +23,7 @@
         <activity android:name=".ui.TrailDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.findtrails.findtrails.ui.TrailsActivity" />
+                android:value="com.findtrails.findtrails.ui.TrailListActivity" />
         </activity>
 
         <activity android:name=".ui.SavedTrailListActivity" />

@@ -14,6 +14,8 @@ import com.findtrails.findtrails.models.Trail;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -41,11 +43,12 @@ public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.Trai
     }
 
     public class TrailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
         @Bind(R.id.trailNameTextView) TextView mNameTextView;
         @Bind(R.id.trailDescriptionTextView) TextView mTrailDescriptionTextView;
         @Bind(R.id.trailDirectionsTextView) TextView mTrailDirectionsTextView;
         @Bind(R.id.trailUrlTextView) TextView mTrailUrlTextView;
-        //private Context mContext;
+        private Context mContext;
 
         public TrailViewHolder(View itemView) {
             super(itemView);
@@ -58,7 +61,7 @@ public class TrailListAdapter extends RecyclerView.Adapter<TrailListAdapter.Trai
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, TrailDetailActivity.class);
-            intent.putExtra("position", itemPosition);
+            intent.putExtra("position", itemPosition + "");
             intent.putExtra("trails", Parcels.wrap(mTrails));
             mContext.startActivity(intent);
         }

@@ -6,12 +6,12 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Trail {
-    private String city;
-    private String state;
-    private String name;
-    private String directions;
-    private String description;
-    private String url;
+     String city;
+     String state;
+     String name;
+     String directions;
+     String description;
+     String url;
 
     public Trail() {}
 

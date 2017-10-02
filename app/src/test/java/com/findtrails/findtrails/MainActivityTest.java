@@ -5,7 +5,7 @@ import android.os.Build;
 import android.widget.TextView;
 
 import com.findtrails.findtrails.ui.MainActivity;
-import com.findtrails.findtrails.ui.TrailsActivity;
+import com.findtrails.findtrails.ui.TrailListActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +36,7 @@ public class MainActivityTest {
     @Test
     public void secondActivityStarted() {
         activity.findViewById(R.id.exploreButton).performClick();
-        Intent expectedIntent = new Intent(activity, TrailsActivity.class);
+        Intent expectedIntent = new Intent(activity, TrailListActivity.class);
         ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
         Intent actualIntent = shadowActivity.getNextStartedActivity();
         assertTrue(actualIntent.filterEquals(expectedIntent));

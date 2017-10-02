@@ -31,7 +31,9 @@ public class TrailDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mTrails = Parcels.unwrap(getIntent().getParcelableExtra("trails"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
+
+        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
+//        int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new TrailPagerAdapter(getSupportFragmentManager(), mTrails);
         mViewPager.setAdapter(adapterViewPager);
