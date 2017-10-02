@@ -48,8 +48,6 @@ public class TrailDetailFragment extends Fragment implements View.OnClickListene
         mTrail = Parcels.unwrap(getArguments().getParcelable("trail"));
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,21 +14,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.findtrails.findtrails.Constants;
 import com.findtrails.findtrails.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private DatabaseReference mSearchedLocationReference;
+    private ValueEventListener mSearchedLocationReferenceListener;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     //private ValueEventListener mSearchedLocationReferenceListener;
-   // private DatabaseReference mSearchedLocationReference;
+    // private DatabaseReference mSearchedLocationReference;
     //private SharedPreferences mSharedPreferences;
-   // private SharedPreferences.Editor mEditor;
+    // private SharedPreferences.Editor mEditor;
 
     @Bind(R.id.exploreButton) Button mExploreButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
@@ -36,6 +45,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSearchedLocationReference =FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
+
+        //Include database content
+        mSearchedLocationReference.addValueEventListener(new ValueEventListener() { //attach listener
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
+                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
+                    String location = locationSnapshot.getValue().toString();
+                    Log.d("Locations updated", "location: " + location); //log
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {   //update UI here if error occurred.
+
+            }
+        });
+        ///End
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -45,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mExploreButton.setOnClickListener(this);
         mSavedTrailsButton.setOnClickListener(this);
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -57,15 +92,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
             }
+
         };
     }
 
 
 
-//        mSearchedLocationReference = FirebaseDatabase
-//                .getInstance()
-//                .getReference()
-//                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
+
+
+
 //
 //
 //
@@ -93,8 +128,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
       //  mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
        // mEditor = mSharedPreferences.edit();
-
-
 
 
 
@@ -152,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mExploreButton) {
             String location = mLocationEditText.getText().toString();
 
-            //saveLocationToFirebase(location);
+            saveLocationToFirebase(location);
             //  if(!(location).equals("")) {
             //     addToSharedPreferences(location);
             //  }
@@ -168,8 +201,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    public void saveLocationToFirebase(String location) {
+        mSearchedLocationReference.setValue(location);
+    }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
+    }
 
     }
 
