@@ -47,7 +47,7 @@ public class SavedTrailListActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Trail, FirebaseTrailViewHolder>
-                (Trail.class, R.layout.trails_list_item, FirebaseTrailViewHolder.class,
+                (Trail.class, R.layout.trail_list_item_drag, FirebaseTrailViewHolder.class,
                         mTrailReference) {
 
             @Override

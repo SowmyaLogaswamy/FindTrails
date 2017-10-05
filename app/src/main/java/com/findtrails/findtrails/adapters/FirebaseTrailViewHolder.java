@@ -42,7 +42,7 @@ public class FirebaseTrailViewHolder extends RecyclerView.ViewHolder implements 
 
         nameTextView.setText(trail.getName());
         descriptionTextView.setText("Description: " + trail.getDescription());
-        directionTextView.setText("Directions: " + trail.getDirections());
+        //directionTextView.setText("Directions: " + trail.getDirections());
     }
 
     @Override
