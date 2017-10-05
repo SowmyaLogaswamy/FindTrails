@@ -12,6 +12,7 @@ public class Trail {
      String directions;
      String description;
      String url;
+    private String pushId;
 
     public Trail() {}
 
@@ -46,6 +47,14 @@ public class Trail {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }
 

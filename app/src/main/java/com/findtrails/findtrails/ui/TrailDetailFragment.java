@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.findtrails.findtrails.Constants;
 import com.findtrails.findtrails.R;
 import com.findtrails.findtrails.models.Trail;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -57,8 +59,7 @@ public class TrailDetailFragment extends Fragment implements View.OnClickListene
         mNameLabel.setText(mTrail.getName());
         mDescriptionLabel.setText(mTrail.getDescription());
         mDirectionsLabel.setText(mTrail.getDirections());
-        //mUrlLabel.setText(mTrail.getUrl());
-
+        mUrlLabel.setText(mTrail.getUrl());
         mUrlLabel.setOnClickListener(this);
 
         mSaveTrailButton.setOnClickListener(this);
@@ -75,10 +76,20 @@ public class TrailDetailFragment extends Fragment implements View.OnClickListene
         }
 
         if (v == mSaveTrailButton) {
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             DatabaseReference trailRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_TRAILS);
-            trailRef.push().setValue(mTrail);
+                    .getReference(Constants.FIREBASE_CHILD_TRAILS)
+                    .child(uid);
+
+            DatabaseReference pushRef = trailRef.push();
+            String pushId = pushRef.getKey();
+            mTrail.setPushId(pushId);
+            pushRef.setValue(mTrail);
+
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
 

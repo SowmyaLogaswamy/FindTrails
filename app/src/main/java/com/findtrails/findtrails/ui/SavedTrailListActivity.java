@@ -10,6 +10,8 @@ import com.findtrails.findtrails.R;
 import com.findtrails.findtrails.adapters.FirebaseTrailViewHolder;
 import com.findtrails.findtrails.models.Trail;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,7 +32,15 @@ public class SavedTrailListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trails);
         ButterKnife.bind(this);
 
-        mTrailReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_TRAILS);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mTrailReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_TRAILS)
+                .child(uid);
+
         setUpFirebaseAdapter();
     }
 
